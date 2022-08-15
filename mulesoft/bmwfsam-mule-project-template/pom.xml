@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.mycompany</groupId>
+	<artifactId>bmwfsam-mule-project-template</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>mule-application</packaging>
+
+	<name>bmwfsam-mule-project-template</name>
+	
+	<parent>
+        <groupId>com.bmwfsam</groupId>
+        <artifactId>parent-pom</artifactId>
+        <version>1.0.0</version>
+        <relativePath>parent-pom.xml</relativePath>
+    </parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>${mule.maven.plugin.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+                <groupId>com.mulesoft.munit.tools</groupId>
+                <artifactId>munit-maven-plugin</artifactId>
+            </plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+            <groupId>com.mulesoft.modules</groupId>
+            <artifactId>mule-secure-configuration-property-module</artifactId>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.connectors</groupId>
+            <artifactId>mule-sockets-connector</artifactId>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.connectors</groupId>
+            <artifactId>mule-http-connector</artifactId>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.connectors</groupId>
+            <artifactId>mule-objectstore-connector</artifactId>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.modules</groupId>
+            <artifactId>mule-apikit-module</artifactId>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+        <dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-validation-module</artifactId>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+        <dependency>
+			<groupId>com.bmwfsam.mule.common</groupId>
+			<artifactId>bmwfsam-mulesoft-common-library</artifactId>
+			<version>1.0.0</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>myNexusMavenRepo.read</id>
+			<url>https://fsam-nexus.us-east-1.aws.cloud.bmw/repository/BMWFS-Mulesoft-maven-Group/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>myNexusMavenRepo.read</id>
+			<name>MuleSoft Releases Repository</name>
+			<layout>default</layout>
+			<url>https://fsam-nexus.us-east-1.aws.cloud.bmw/repository/BMWFS-Mulesoft-maven-Group/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:validation="http://www.mulesoft.org/schema/mule/validation"
+	xmlns:os="http://www.mulesoft.org/schema/mule/os" xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties"
+	xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway"
+	xmlns:wsc="http://www.mulesoft.org/schema/mule/wsc" xmlns:tls="http://www.mulesoft.org/schema/mule/tls"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mule/validation/current/mule-validation.xsd 
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd 
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/wsc http://www.mulesoft.org/schema/mule/wsc/current/mule-wsc.xsd
+http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd
+http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
+	<http:request-config name="HTTP_Request_Microservice" doc:name="HTTP Request configuration" doc:id="cccfcbf1-b08d-48ea-b359-be567107361c" >
+		<http:request-connection protocol="HTTPS" tlsContext="TLS_Context">
+		</http:request-connection>
+	</http:request-config>
+	<http:request-config name="HTTP_Request_SystemApi" doc:name="HTTPS Request configuration" doc:id="bbdfa61d-1142-4ca4-9057-1a23b0fd1e78">
+        <http:request-connection protocol="HTTPS" tlsContext="TLS_Context">
+		</http:request-connection>
+    </http:request-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="86f9c1b5-0310-424c-95cd-e0566d2f7222" file="config.${MULE_RUNTIME_ENVIRONMENT}.yaml" />
+	
+	<configuration doc:name="Configuration" doc:id="fd9a6e1b-690d-470e-aa5a-ccb97c40465d" defaultErrorHandler-ref="globalErrorHandler" />
+	<import doc:name="Import" doc:id="a8741ed1-f1df-4683-8e0a-aa4609c8b491" file="globalErrorHandler.xml" />
+	<import doc:name="Import" doc:id="0f029aa1-b348-4374-9a9c-969ab6852019" file="bmwfsam-mulesoft-common-library.xml" />
+</mule>
