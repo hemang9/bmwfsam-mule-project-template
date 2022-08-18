@@ -40,7 +40,32 @@
                     <artifactId>mule-maven-plugin</artifactId>
                     <version>${mule.maven.plugin.version}</version>
                     <extensions>true</extensions>
-                   
+                   <configuration>
+                    <cloudHubDeployment>
+                        <uri>${anypoint.url}</uri>
+                        <muleVersion>${mule.version}</muleVersion>
+                        <connectedAppClientId>${connected.app.client.id}</connectedAppClientId>
+                        <connectedAppClientSecret>${connected.app.client.secret}</connectedAppClientSecret>
+                        <connectedAppGrantType>${connected.app.grant.type}</connectedAppGrantType>
+                        <applicationName>${mule.applicationName}-${env}</applicationName>
+                        <environment>${environment}</environment>
+                        <region>${region}</region>
+                        <workers>${workers}</workers>
+                        <workerType>${workerType}</workerType>
+                        <businessGroupId>${business.group.id}</businessGroupId>
+                        <objectStoreV2>true</objectStoreV2>
+                        <properties>
+                            <env>${env}</env>
+                            <encryption.key>${encryption.key}</encryption.key>
+                            <anypoint.platform.client_id>${anypoint.platform.client.id}</anypoint.platform.client_id>
+                            <anypoint.platform.client_secret>${anypoint.platform.client.secret}</anypoint.platform.client_secret>
+                            <anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
+                            <anypoint.platform.visualizer.layer>${api.layer.exp}</anypoint.platform.visualizer.layer>
+                            <anypoint.platform.visualizer.displayName>${project.artifactId}</anypoint.platform.visualizer.displayName>
+                        </properties>
+                    </cloudHubDeployment>
+                    <classifier>mule-application</classifier>
+                </configuration>
                 </plugin>
                 <plugin>
                     <groupId>com.mulesoft.munit.tools</groupId>
@@ -126,6 +151,12 @@
 				<version>${mule.validation.version}</version>
 				<classifier>mule-plugin</classifier>
 			</dependency>
+			<dependency>
+                <groupId>com.mulesoft.connectors</groupId>
+                <artifactId>mule-cloudhub-connector</artifactId>
+                <version>${mule.cloudhub.connector.version}</version>
+                <classifier>mule-plugin</classifier>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     

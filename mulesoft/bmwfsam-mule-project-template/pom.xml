@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.bmwfsam</groupId>
+		<artifactId>parent-pom</artifactId>
+		<version>1.0.0</version>
+		<relativePath>parent-pom.xml</relativePath>
+	</parent>
 
 	<groupId>com.mycompany</groupId>
 	<artifactId>bmwfsam-mule-project-template</artifactId>
@@ -8,17 +14,11 @@
 	<packaging>mule-application</packaging>
 
 	<name>bmwfsam-mule-project-template</name>
-	
-	<parent>
-        <groupId>com.bmwfsam</groupId>
-        <artifactId>parent-pom</artifactId>
-        <version>1.0.0</version>
-        <relativePath>parent-pom.xml</relativePath>
-    </parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- <mule.maven.plugin.version>3.5.4</mule.maven.plugin.version>-->
 	</properties>
 
 	<build>
@@ -34,48 +34,60 @@
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>
-                <groupId>com.mulesoft.munit.tools</groupId>
-                <artifactId>munit-maven-plugin</artifactId>
-            </plugin>
+				<groupId>com.mulesoft.munit.tools</groupId>
+				<artifactId>munit-maven-plugin</artifactId>
+			</plugin>
 		</plugins>
 	</build>
 
 	<dependencies>
 		<dependency>
-            <groupId>com.mulesoft.modules</groupId>
-            <artifactId>mule-secure-configuration-property-module</artifactId>
-            <classifier>mule-plugin</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.connectors</groupId>
-            <artifactId>mule-sockets-connector</artifactId>
-            <classifier>mule-plugin</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.connectors</groupId>
-            <artifactId>mule-http-connector</artifactId>
-            <classifier>mule-plugin</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.connectors</groupId>
-            <artifactId>mule-objectstore-connector</artifactId>
-            <classifier>mule-plugin</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-apikit-module</artifactId>
-            <classifier>mule-plugin</classifier>
-        </dependency>
-        <dependency>
+			<groupId>com.mulesoft.modules</groupId>
+			<artifactId>mule-secure-configuration-property-module</artifactId>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-sockets-connector</artifactId>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-http-connector</artifactId>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-objectstore-connector</artifactId>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-apikit-module</artifactId>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-validation-module</artifactId>
 			<classifier>mule-plugin</classifier>
 		</dependency>
-        <dependency>
+		<dependency>
 			<groupId>com.bmwfsam.mule.common</groupId>
 			<artifactId>bmwfsam-mulesoft-common-library</artifactId>
 			<version>1.0.3</version>
 			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-runner</artifactId>
+			<classifier>mule-plugin</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-tools</artifactId>
+			<classifier>mule-plugin</classifier>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
