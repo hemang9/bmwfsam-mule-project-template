@@ -8,7 +8,7 @@
 		<relativePath>parent-pom.xml</relativePath>
 	</parent>
 
-	<groupId>com.mycompany</groupId>
+	<groupId>com.bmwfsam</groupId>
 	<artifactId>bmwfsam-mule-project-template</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
@@ -18,7 +18,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<!-- <mule.maven.plugin.version>3.5.4</mule.maven.plugin.version>-->
+
 	</properties>
 
 	<build>
@@ -32,6 +32,9 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+				<configuration>
+					<classifier>mule-application</classifier>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>com.mulesoft.munit.tools</groupId>
@@ -91,24 +94,6 @@
 		</dependency>
 	</dependencies>
 
-	<repositories>
-		<repository>
-			<id>myNexusMavenRepo.read</id>
-			<url>https://fsam-nexus.us-east-1.aws.cloud.bmw/repository/BMWFS-Mulesoft-maven-Group/</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>myNexusMavenRepo.read</id>
-			<name>MuleSoft Releases Repository</name>
-			<layout>default</layout>
-			<url>https://fsam-nexus.us-east-1.aws.cloud.bmw/repository/BMWFS-Mulesoft-maven-Group/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
+	
 
 </project>
