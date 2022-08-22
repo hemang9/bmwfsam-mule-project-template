@@ -25,6 +25,7 @@
         <mule.secure.configuration.property.module.version>1.2.3</mule.secure.configuration.property.module.version>
         <munit.tools.version>2.3.9</munit.tools.version>
         <mule.validation.version>2.0.1</mule.validation.version>
+        <splunk.logging.library>1.9.0</splunk.logging.library>
     </properties>
     
     <build>
@@ -60,7 +61,9 @@
                             <anypoint.platform.client_id>${anypoint.platform.client.id}</anypoint.platform.client_id>
                             <anypoint.platform.client_secret>${anypoint.platform.client.secret}</anypoint.platform.client_secret>
                             <anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
-                            
+                            <splunk.url>${splunk.url}</splunk.url>
+	                        <splunk.token>${splunk.token}</splunk.token>
+	                        <splunk.index>${splunk.index}</splunk.index>
                             <!-- Decision pending depending on how we will be aggregating sys,proc and exp
                             <anypoint.platform.visualizer.layer>${api.layer.exp}</anypoint.platform.visualizer.layer>
                             <anypoint.platform.visualizer.displayName>${project.artifactId}</anypoint.platform.visualizer.displayName>
