@@ -4,21 +4,18 @@
 	<parent>
 		<groupId>com.bmwfsam</groupId>
 		<artifactId>parent-pom</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 		<relativePath>parent-pom.xml</relativePath>
 	</parent>
-
 	<groupId>com.bmwfsam</groupId>
 	<artifactId>bmwfsam-mule-project-template</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
-
 	<name>bmwfsam-mule-project-template</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
 	</properties>
 
 	<build>
@@ -97,7 +94,4 @@
 			<artifactId>splunk-library-javalogging</artifactId>
 		</dependency>
 	</dependencies>
-
-	
-
 </project>

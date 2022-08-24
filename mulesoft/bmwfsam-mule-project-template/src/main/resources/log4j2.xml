@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Configuration status="INFO" name="cloudhub" packages="com.splunk.logging,org.apache.logging.log4j">
-
+<Configuration status="INFO" name="cloudhub" packages="com.splunk.logging,org.apache.logging.log4j,com.mulesoft.ch.logging.appender">
     <!--These are some of the loggers you can enable. 
         There are several more you can find in the documentation. 
         Besides this log4j configuration, you can also use Java VM environment variables
@@ -9,16 +8,39 @@
         see them in the mule_ee.log file. -->
 
     <Appenders>
-        <RollingFile name="file" fileName="${sys:mule.home}${sys:file.separator}logs${sys:file.separator}bmwfsam-mule-project-template.log"
-                 filePattern="${sys:mule.home}${sys:file.separator}logs${sys:file.separator}bmwfsam-mule-project-template-%i.log">
+        <RollingFile name="file" fileName="${sys:mule.home}${sys:file.separator}logs${sys:file.separator}${sys:applicationName}.log"
+                 filePattern="${sys:mule.home}${sys:file.separator}logs${sys:file.separator}${sys:applicationName}-%i.log">
             <PatternLayout pattern="%-5p %d [%t] [processor: %X{processorPath}; event: %X{correlationId}] %c: %m%n"/>
             <SizeBasedTriggeringPolicy size="10 MB"/>
             <DefaultRolloverStrategy max="10"/>
         </RollingFile>
-        <SplunkHttp name="splunk" url="${splunk.url}" token="${splunk.token}" index="${splunk.index}" source="mulesoft" sourcetype="mulesoft"
+        <SplunkHttp name="splunk" host="${sys:applicationName}" url="${sys:splunk.url}" token="${sys:splunk.token}" index="${sys:splunk.index}" source="mulesoft" sourcetype="mulesoft"
               batch_size_count="1" disableCertificateValidation="true"/>
+         <Log4J2CloudhubLogAppender name="CLOUDHUB"
+                addressProvider="com.mulesoft.ch.logging.DefaultAggregatorAddressProvider"
+                applicationContext="com.mulesoft.ch.logging.DefaultApplicationContext"
+                appendRetryIntervalMs="${sys:logging.appendRetryInterval}"
+                appendMaxAttempts="${sys:logging.appendMaxAttempts}"
+                batchSendIntervalMs="${sys:logging.batchSendInterval}"
+                batchMaxRecords="${sys:logging.batchMaxRecords}"
+                memBufferMaxSize="${sys:logging.memBufferMaxSize}"
+                journalMaxWriteBatchSize="${sys:logging.journalMaxBatchSize}"
+                journalMaxFileSize="${sys:logging.journalMaxFileSize}"
+                clientMaxPacketSize="${sys:logging.clientMaxPacketSize}"
+                clientConnectTimeoutMs="${sys:logging.clientConnectTimeout}"
+                clientSocketTimeoutMs="${sys:logging.clientSocketTimeout}"
+                serverAddressPollIntervalMs="${sys:logging.serverAddressPollInterval}"
+                serverHeartbeatSendIntervalMs="${sys:logging.serverHeartbeatSendIntervalMs}"
+                statisticsPrintIntervalMs="${sys:logging.statisticsPrintIntervalMs}">
+
+            <PatternLayout pattern="[%d{MM-dd HH:mm:ss}] %-5p %c{1} [%t]: %m%n"/>
+        </Log4J2CloudhubLogAppender>
+         
     </Appenders>
 
+   
+              
+              
     <Loggers>
         <!-- Http Logger shows wire traffic on DEBUG -->
         <!--AsyncLogger name="org.mule.service.http.impl.service.HttpMessageLogger" level="DEBUG"/-->
@@ -27,10 +49,11 @@
 
         <!-- Mule logger -->
         <AsyncLogger name="org.mule.runtime.core.internal.processor.LoggerMessageProcessor" level="INFO"/>
-
+        
         <AsyncRoot level="INFO">
             <AppenderRef ref="file"/>
             <AppenderRef ref="splunk"/>
+            <!-- <AppenderRef ref="CLOUDHUB"/>--> 
         </AsyncRoot>
     </Loggers>
 
