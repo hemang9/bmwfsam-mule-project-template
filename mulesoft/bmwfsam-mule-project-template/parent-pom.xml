@@ -26,6 +26,7 @@
         <munit.tools.version>2.3.9</munit.tools.version>
         <mule.validation.version>2.0.1</mule.validation.version>
         <splunk.logging.library>1.9.0</splunk.logging.library>
+        <mule-opentelemetry-module-version>1.0.0</mule-opentelemetry-module-version>
     </properties>
     
     <build>
@@ -168,6 +169,12 @@
 				<artifactId>splunk-library-javalogging</artifactId>
 				<version>${splunk.logging.library}</version>
 			</dependency>
+			<dependency>
+		      <groupId>com.avioconsulting</groupId>
+		      <artifactId>mule-opentelemetry-module</artifactId>
+		      <version>${mule-opentelemetry-module-version}</version>
+		      <classifier>mule-plugin</classifier>
+		    </dependency>
         </dependencies>
     </dependencyManagement>
     
